@@ -7,21 +7,9 @@
 
 // Home row mods macro
 
-#define HRML(k1,k2,k3,k4) &ht LSHFT k1  &ht LCTRL k2  &ht LGUI k3  &ht LALT k4
-#define HRMR(k1,k2,k3,k4) &ht RALT  k1  &ht RGUI  k2  &ht RCTRL k3  &ht RSHFT k4
+#define HRML(k1,k2,k3,k4) &ht LSHFT k1  &ht LALT k2  &ht LGUI k3  &ht LCTRL k4
+#define HRMR(k1,k2,k3,k4) &ht RCTRL k1  &ht RGUI k2  &ht RALT k3  &ht RSHFT k4
 
-#define COMBO(NAME, BINDINGS, KEYPOS, LAYERS) \
-  combo_##NAME { \
-    compatible = "zmk,combos"; \
-    bindings = <BINDINGS>; \
-    key-positions = <KEYPOS>; \
-    layers = <LAYERS>; \
-  };
-
-COMBO(arrow_left, &kp LARW, 12 15, 0)
-COMBO(arrow_down, &kp DARW, 12 16, 0)
-COMBO(arrow_up, &kp UARW, 12 17, 0)
-COMBO(arrow_right, &kp RARW, 12 18, 0)
 
 / {
     behaviors {
@@ -66,16 +54,16 @@ COMBO(arrow_right, &kp RARW, 12 18, 0)
         right_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│    `     │     7    │     8    │     9    │          │   │   ^      │  &       │  *       │    -     │     =    │
-            &kp GRAVE   &kp N7     &kp N8     &kp N9     &trans        &kp CARET  &kp AMPS   &kp ASTRK  &kp MINUS  &kp EQUAL
+        //│ 1        │  2       │  3       │  4       │    5     │   │   6      │     7    │    8     │   9      │    0     │
+            &kp N1     &kp N2     &kp N3     &kp N4     &kp N5         &kp N6      &kp N7     &kp N8    &kp N9      &kp N0
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│    TAB   │    4     │    5     │     6    │          │   │          │          │          │          │          │
-            &kp TAB      &kp N4     &kp N5     &kp N6     &trans        &trans    &trans     &trans     &trans      &trans
+        //│   ~      │          │  (       │  {       │    [     │   │          │          │          │          │   ' "    │
+            &kp TILDE    &trans     &kp LPAR   &kp LBRC   &kp LBKT        &trans    &trans     &trans     &trans      &kp SQT
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│   0      │    1     │    2     │     3    │   CAPS   │   │          │          │          │          │          │
-             &kp N0    &kp N1     &kp N2     &kp N3    &caps_word       &trans     &trans     &trans     &trans     &trans
+        //│ CAPS     │          │  )       │  }       │     ]    │   │          │          │          │          │          │
+           &caps_word  &trans     &kp RPAR   &kp RBRC   &kp RBKT         &trans     &trans     &trans     &trans     &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &trans      &trans        &trans     &trans
+                                             &trans     &kp TAB        &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -83,14 +71,14 @@ COMBO(arrow_right, &kp RARW, 12 18, 0)
         left_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│    !     │  @       │   #      │   $      │    %     │   │ VOL DOWN │  VOL UP  │    (     │    )     │   =      │
-            &kp EXCL    &kp AT    &kp HASH   &kp DLLR   &kp PRCNT   &kp C_VOL_DN &kp C_VOL_UP   &kp LPAR  &kp RPAR  &kp EQUAL
+        //│    !     │  @       │   #      │   $      │    %     │   │  ^       │  &       │  *       │  -       │   =      │
+            &kp EXCL    &kp AT    &kp HASH   &kp DLLR   &kp PRCNT      &kp CARET  &kp AMPS   &kp ASTRK  &kp MINUS  &kp EQUAL
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  ~       │          │          │          │   Mute   │   │Play/Pause│   Next   │    {     │    }     │  ' "     │
-            &kp TILDE   &trans     &trans     &trans   &kp C_MUTE  &kp C_PLAY_PAUSE &kp C_NEXT &kp LBRC   &kp RBRC   &kp SQT
+        //│  `       │          │          │          │          │   │   LEFT   │   DOWN   │    UP    │  RIGHT   │  \       │
+            &kp GRAVE   &trans     &trans     &trans     &trans        &kp LARW   &kp DARW   &kp UARW   &kp RARW   &kp BSLH
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │          │          │   │Bright DWN│Bright UP │    [     │    ]     │    \     │
-            &trans     &trans     &trans     &trans     &trans      &kp C_BRI_DEC &kp C_BRI_INC &kp LBKT   &kp RBKT   &kp BSLH
+        //│          │          │          │          │          │   │          │          │          │          │          │
+            &trans     &trans     &trans     &trans     &trans          &trans    &trans      &trans      &trans   &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &trans     &trans         &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
