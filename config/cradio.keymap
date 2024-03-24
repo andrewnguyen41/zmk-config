@@ -13,6 +13,7 @@
 #define COMBO(NAME, BINDINGS, KEYPOS, LAYERS) \
   combo_##NAME { \
     bindings = <BINDINGS>; \
+    timeout-ms = <1000>; \
     key-positions = <KEYPOS>; \
     layers = <LAYERS>; \
   };
