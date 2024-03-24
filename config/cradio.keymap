@@ -12,16 +12,10 @@
 
 #define COMBO(NAME, BINDINGS, KEYPOS, LAYERS) \
   combo_##NAME { \
-    compatible = "zmk,combos"; \
     bindings = <BINDINGS>; \
     key-positions = <KEYPOS>; \
     layers = <LAYERS>; \
   };
-
-COMBO(arrow_left, &kp LARW, 12 15, 0)
-COMBO(arrow_down, &kp DARW, 12 16, 0)
-COMBO(arrow_up, &kp UARW, 12 17, 0)
-COMBO(arrow_right, &kp RARW, 12 18, 0)
 
 / {
     behaviors {
@@ -35,6 +29,14 @@ COMBO(arrow_right, &kp RARW, 12 18, 0)
             bindings = <&kp>, <&kp>;
         };
     };
+
+    combos {
+        compatible = "zmk,combos";
+        COMBO(arrow_left, &kp LARW, 12 15, 0)
+        COMBO(arrow_down, &kp DARW, 12 16, 0)
+        COMBO(arrow_up, &kp UARW, 12 17, 0)
+        COMBO(arrow_right, &kp RARW, 12 18, 0)
+    }
 
     conditional_layers {
         compatible = "zmk,conditional-layers";
