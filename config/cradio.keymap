@@ -36,7 +36,7 @@
         COMBO(arrow_down, &kp DARW, 12 16, 0)
         COMBO(arrow_up, &kp UARW, 12 17, 0)
         COMBO(arrow_right, &kp RARW, 12 18, 0)
-    }
+    };
 
     conditional_layers {
         compatible = "zmk,conditional-layers";
