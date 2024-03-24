@@ -13,7 +13,7 @@
 #define COMBO(NAME, BINDINGS, KEYPOS, LAYERS) \
   combo_##NAME { \
     bindings = <BINDINGS>; \
-    timeout-ms = <1000>; \
+    timeout-ms = <100>; \
     key-positions = <KEYPOS>; \
     layers = <LAYERS>; \
   };
@@ -33,10 +33,6 @@
 
     combos {
         compatible = "zmk,combos";
-        COMBO(arrow_left, &kp LARW, 12 15, 0)
-        COMBO(arrow_down, &kp DARW, 12 16, 0)
-        COMBO(arrow_up, &kp UARW, 12 17, 0)
-        COMBO(arrow_right, &kp RARW, 12 18, 0)
     };
 
     conditional_layers {
@@ -69,14 +65,14 @@
         right_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│    `     │     7    │     8    │     9    │          │   │   ^      │  &       │  *       │    -     │     =    │
-            &kp GRAVE   &kp N7     &kp N8     &kp N9     &trans        &kp CARET  &kp AMPS   &kp ASTRK  &kp MINUS  &kp EQUAL
+        //│    `     │     7    │     8    │     9    │          │   │ VOL DOWN │  VOL UP  │    (     │    )     │          │
+            &kp GRAVE   &kp N7     &kp N8     &kp N9     &trans     &kp C_VOL_DN &kp C_VOL_UP   &kp LPAR  &kp RPAR  &trans
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│    TAB   │    4     │    5     │     6    │          │   │          │          │          │          │          │
-            &kp TAB      &kp N4     &kp N5     &kp N6     &trans        &trans    &trans     &trans     &trans      &trans
+        //│    TAB   │    4     │    5     │     6    │          │   │Play/Pause│   Next   │    {     │    }     │          │
+            &kp TAB      &kp N4     &kp N5     &kp N6     &trans     &kp C_PLAY_PAUSE &kp C_NEXT &kp LBRC   &kp RBRC   &trans
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│   0      │    1     │    2     │     3    │   CAPS   │   │          │          │          │          │          │
-             &kp N0    &kp N1     &kp N2     &kp N3    &caps_word       &trans     &trans     &trans     &trans     &trans
+        //│   0      │    1     │    2     │     3    │   CAPS   │   │Bright DWN│Bright UP │    [     │    ]     │          │
+             &kp N0    &kp N1     &kp N2     &kp N3    &caps_word   &kp C_BRI_DEC &kp C_BRI_INC &kp LBKT   &kp RBKT   &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &trans      &trans        &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
@@ -86,14 +82,14 @@
         left_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│    !     │  @       │   #      │   $      │    %     │   │ VOL DOWN │  VOL UP  │    (     │    )     │   =      │
-            &kp EXCL    &kp AT    &kp HASH   &kp DLLR   &kp PRCNT   &kp C_VOL_DN &kp C_VOL_UP   &kp LPAR  &kp RPAR  &kp EQUAL
+        //│    !     │  @       │   #      │   $      │    %     │   │  ^       │  &       │  *       │  -       │   =      │
+            &kp EXCL    &kp AT    &kp HASH   &kp DLLR   &kp PRCNT      &kp CARET  &kp AMPS   &kp ASTRK  &kp MINUS  &kp EQUAL
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  ~       │          │          │          │   Mute   │   │Play/Pause│   Next   │    {     │    }     │  ' "     │
-            &kp TILDE   &trans     &trans     &trans   &kp C_MUTE  &kp C_PLAY_PAUSE &kp C_NEXT &kp LBRC   &kp RBRC   &kp SQT
+        //│  ~       │          │          │          │          │   │   LEFT   │   DOWN   │    UP    │  RIGHT   │  ' "     │
+            &kp TILDE   &trans     &trans     &trans    &trans         &kp LARW   &kp DARW   &kp UARW   &kp RARW   &kp SQT
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │          │          │   │Bright DWN│Bright UP │    [     │    ]     │    \     │
-            &trans     &trans     &trans     &trans     &trans      &kp C_BRI_DEC &kp C_BRI_INC &kp LBKT   &kp RBKT   &kp BSLH
+        //│          │          │          │          │          │   │          │          │          │          │    \     │
+            &trans     &trans     &trans     &trans     &trans          &trans    &trans      &trans      &trans   &kp BSLH
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &trans     &trans         &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
