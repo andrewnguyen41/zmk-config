@@ -65,14 +65,14 @@
         right_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│    `     │     7    │     8    │     9    │          │   │ VOL DOWN │  VOL UP  │    (     │    )     │          │
-            &kp GRAVE   &kp N7     &kp N8     &kp N9     &trans     &kp C_VOL_DN &kp C_VOL_UP   &kp LPAR  &kp RPAR  &trans
+        //│    `     │     1    │     2    │     3    │          │   │ VOL DOWN │  VOL UP  │    (     │    )     │          │
+            &kp GRAVE   &kp N1     &kp N2     &kp N3     &trans     &kp C_VOL_DN &kp C_VOL_UP   &kp LPAR  &kp RPAR  &trans
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│    TAB   │    4     │    5     │     6    │          │   │Play/Pause│   Next   │    {     │    }     │          │
-            &kp TAB      &kp N4     &kp N5     &kp N6     &trans     &kp C_PLAY_PAUSE &kp C_NEXT &kp LBRC   &kp RBRC   &trans
+            &kp TAB     &kp N4     &kp N5     &kp N6     &trans     &kp C_PLAY_PAUSE &kp C_NEXT &kp LBRC   &kp RBRC   &trans
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│   0      │    1     │    2     │     3    │   CAPS   │   │Bright DWN│Bright UP │    [     │    ]     │          │
-             &kp N0    &kp N1     &kp N2     &kp N3    &caps_word   &kp C_BRI_DEC &kp C_BRI_INC &kp LBKT   &kp RBKT   &trans
+        //│   CAPS   │    7     │    8     │     9    │    0     │   │Bright DWN│Bright UP │    [     │    ]     │          │
+          &caps_word    &kp N7     &kp N8     &kp N9    &kp N0   &kp C_BRI_DEC &kp C_BRI_INC &kp LBKT   &kp RBKT   &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &trans      &trans        &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
